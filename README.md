@@ -1,68 +1,140 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-hooks-crud-web-api
 
-## Available Scripts
+# Introduction
 
-In the project directory, you can run:
+本文旨在学会通过Axios实现web API CRUD。目的有：
 
-### `yarn start`
+1. 作为前端入门的自我上岗面试题
+2. 未来博客的示例代码，同时开源
+3. 将来redux，router等新技术的基础版
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technology
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+In this tutorial, I will show you how to build a React Hooks CRUD Application to consume Web API with Axios, display and modify data with Router & Bootstrap.
 
-### `yarn test`
+~~~json
+  "axios": "^0.20.0",
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  "bootstrap": "^4.4.1",
 
-### `yarn build`
+  "react": "^16.13.1",
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  "react-dom": "^16.13.1",
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  "react-router-dom": "^5.1.2",
+~~~
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`api.py`
 
-### `yarn eject`
+REST API接口要通过python脚本运行一个本地服务,才可让axios去操作。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+~~~cmd
+C:\Users\chenh\Desktop\react\production>python api.py
+chrome
+http://localhost:8008/tutorials
+or 
+C:\Users\chenh>curl -i http://localhost:8008/tutorials
+~~~
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="C:\Users\chenh\Desktop\react\1 project\0 img\image-20200927195423039.png" alt="image-20200927195423039" style="zoom: 67%;" />
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Architecture(without db)
 
-### Code Splitting
+![react-hooks-crud-axios-api-example-components](https://bezkoder.com/wp-content/uploads/2020/04/react-hooks-crud-axios-api-example-components.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Architecture(with Postgresql)
 
-### Analyzing the Bundle Size
+![react-node-express-postgresql-crud-example-architecture](https://bezkoder.com/wp-content/uploads/2020/03/react-node-express-postgresql-crud-example-architecture.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Coding
 
-### Making a Progressive Web App
+## Main screenshots
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![react-hooks-crud-axios-api-example-find-by-field](https://bezkoder.com/wp-content/uploads/2020/04/react-hooks-crud-axios-api-example-find-by-field.png)
 
-### Advanced Configuration
+## Web API lists
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+| Methods | Urls                           | Actions                                           |
+| :------ | :----------------------------- | :------------------------------------------------ |
+| GET     | /api/tutorials                 | retrieve all Tutorials                            |
+| GET     | /api/tutorials/:id             | retrieve a Tutorial by `:id`                      |
+| POST    | /api/tutorials                 | create new Tutorial                               |
+| PUT     | /api/tutorials/:id             | update a Tutorial by `:id`                        |
+| DELETE  | /api/tutorials/:id             | delete a Tutorial by `:id`                        |
+| DELETE  | /api/tutorials                 | delete all Tutorials                              |
+| GET     | /api/tutorials?title=[keyword] | find all Tutorials which title contains `keyword` |
+|         |                                |                                                   |
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `yarn build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Project Structure
+
+
+
+## Step 1 — index.js
+
+
+
+## Step 2 — app.js
+
+
+
+## Step 3 — http-common.js
+
+
+
+## Step 4 — TutorialHttp.js
+
+在本项目中`TutorialHttp.js`用于定义Rest API操作的js.
+
+We call axios (imported as http) `get`, `post`, `put`, `delete` method corresponding to HTTP Requests: GET, POST, PUT, DELETE to make CRUD Operations.
+
+## Step 5 — AddTutorial.jsx
+
+feat:
+
+1. 判断提交状态是否为true，若是，则提示"已提交"，显示`Add Tutorial`按钮用于再新增操作。若否，则展示新增turotial界面。
+2. 新增操作只需在2个文本框输入title(must have)，description(optional)，功能按钮有：submit、 reset。
+3. [选择用antd的modal和form组件。]
+4. 
+
+## Step 6 — TutorialList.jsx
+
+
+
+# Conclusion
+
+# Ref
+
+## 1 [`参考blog & github`](https://bezkoder.com/react-hooks-crud-axios-api/)
+
+[local code dir from github ](C:\Users\chenh\Desktop\react\demo\0 github\react-hooks-crud-web-api)
+
+[local code dir](C:\Users\chenh\Desktop\react\demo\react-hooks-crud-web-api)
+
+[hiyan github](https://github.com/thetiss/react-hooks-crud-web-api.git)
+
+2 https://reactrouter.com/web/guides/quick-start
+
+## 2 [`full stack参考blog`](https://bezkoder.com/react-node-express-postgresql/)
+
+## 3 [`axios API`](https://www.npmjs.com/package/axios)
+
+
+
+# RoadMap
+
+## 0.0.1-alpha.2
+
+1. `A` 
+2. 
+
+## 0.0.1-alpha.1
+
+1. `A` 初始化版
