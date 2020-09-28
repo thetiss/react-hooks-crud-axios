@@ -29,7 +29,7 @@ In this tutorial, I will show you how to build a React Hooks CRUD Application to
 REST API接口要通过python脚本运行一个本地服务,才可让axios去操作。
 
 ~~~cmd
-C:\Users\chenh\Desktop\react\production>python api.py
+C:\Users\chenh\Desktop\react\demo\0 github\react-hooks-crud-web-api\src\components>python api.py
 chrome
 http://localhost:8008/tutorials
 or 
@@ -58,16 +58,16 @@ C:\Users\chenh>curl -i http://localhost:8008/tutorials
 
 ## Web API lists
 
-| Methods | Urls                           | Actions                                           |
-| :------ | :----------------------------- | :------------------------------------------------ |
-| GET     | /api/tutorials                 | retrieve all Tutorials                            |
-| GET     | /api/tutorials/:id             | retrieve a Tutorial by `:id`                      |
-| POST    | /api/tutorials                 | create new Tutorial                               |
-| PUT     | /api/tutorials/:id             | update a Tutorial by `:id`                        |
-| DELETE  | /api/tutorials/:id             | delete a Tutorial by `:id`                        |
-| DELETE  | /api/tutorials                 | delete all Tutorials                              |
-| GET     | /api/tutorials?title=[keyword] | find all Tutorials which title contains `keyword` |
-|         |                                |                                                   |
+| Methods | Urls                       | Actions                                           |
+| :------ | :------------------------- | :------------------------------------------------ |
+| GET     | /tutorials                 | retrieve all Tutorials                            |
+| GET     | /tutorials/:id             | retrieve a Tutorial by `:id`                      |
+| POST    | /tutorials                 | create new Tutorial                               |
+| PUT     | /tutorials/:id             | update a Tutorial by `:id`                        |
+| DELETE  | /tutorials/:id             | delete a Tutorial by `:id`                        |
+| DELETE  | /tutorials                 | delete all Tutorials                              |
+| GET     | /tutorials?title=[keyword] | find all Tutorials which title contains `keyword` |
+|         |                            |                                                   |
 
 
 
@@ -82,6 +82,12 @@ C:\Users\chenh>curl -i http://localhost:8008/tutorials
 
 
 ## Step 2 — app.js
+
+~~~js
+import "bootstrap/dist/css/bootstrap.min.css";
+不能是,会报错
+import bootstrap from "bootstrap"
+~~~
 
 
 
@@ -105,6 +111,25 @@ feat:
 4. 
 
 ## Step 6 — TutorialList.jsx
+
+feat:
+
+1. 可根据title在搜索框中搜索tutorial，在tutorial信息列表展示所有，默认选中首行。
+
+   ~~~js
+   control by const [currentIndex, setCurrentIndex] = useState(-1)#不选中
+   control by const [currentIndex, setCurrentIndex] = useState(0)#若有元素，则选中首行
+   ~~~
+
+   en：a search bar for finding tutorial by title，a tutorials array displayed as a list  on the left.
+
+2. 选中tutorial后，通过编辑按钮对tutorial进行编辑。
+
+   a seleted tutorial containing details which is shown on the right and can be deleted,modified.
+
+3. [批量删除]
+
+4. [选择用antd的modal和form组件]
 
 
 

@@ -2,14 +2,14 @@
  * @Author: hiyan
  * @Date: 2020-09-27 16:46:39
  * @Last Modified by: hiyan
- * @Last Modified time: 2020-09-27 17:21:08
+ * @Last Modified time: 2020-09-28 14:15:35
  */
 
 import http from "../http-common";
 
 // Tutorial.service用于操作tutorial访问数据
 // 返回所有
-const getAllTutorial = () => {
+const getAllTutorials = () => {
   return http.get("/tutorials");
 };
 
@@ -40,11 +40,11 @@ const deleteMassTutorial = (ids) => {
 
 // 根据字段title查找
 const findTutorialByTitle = (title) => {
-  return http.get(`/tutorials?title=${title}`);
+  return http.get(`/query?title=${title}`);
 };
 
 export default {
-  getAllTutorial,
+  getAllTutorials,
   getTutorialById,
   addTutorial,
   modifyTutorial,

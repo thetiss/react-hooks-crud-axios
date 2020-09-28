@@ -2,21 +2,21 @@
  * @Author: hiyan
  * @Date: 2020-09-27 16:47:13
  * @Last Modified by: hiyan
- * @Last Modified time: 2020-09-27 18:34:48
+ * @Last Modified time: 2020-09-28 11:36:48
  */
 
 import React, { useState } from "react";
 import TutorialHttp from "../services/TutorialHttp";
 
 const AddTutorial = () => {
-  const [tutorial, setTutorial] = useState(initTutorialState);
-  const [submitted, setSubmitted] = useState(false);
   const initTutorialState = {
     id: null,
     title: "",
     description: "",
     published: false,
   };
+  const [tutorial, setTutorial] = useState(initTutorialState);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleInputValueChange = (e) => {
     const { name, value } = e.target;
@@ -31,10 +31,10 @@ const AddTutorial = () => {
     TutorialHttp.addTutorial(data)
       .then((response) => {
         setTutorial({
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published,
+          id: response.data.data.id,
+          title: response.data.data.title,
+          description: response.data.data.description,
+          published: response.data.data.published,
         });
         setSubmitted(true);
         console.log(response.data);
@@ -43,7 +43,7 @@ const AddTutorial = () => {
         console.log(e);
       });
   };
-  const initTutorial = () => {
+  const initializeTutorial = () => {
     setTutorial(initTutorialState);
     setSubmitted(false);
   };
@@ -52,21 +52,43 @@ const AddTutorial = () => {
       {submitted ? (
         <div>
           <h2>You have submitted!</h2>
-          <button onClick={initTutorial}>New Tutorial</button>
+          <button onClick={initializeTutorial}>New Tutorial</button>
         </div>
       ) : (
         <div>
           <div className="form-group">
             <label htmlFor="title">Title</label>
-            <input name="title" className="form-control"></input>
-            <button onClick={saveTutorial}>提交</button>
-            <button type="reset">重置</button>
+            <input
+              type="text"
+              name="title"
+              value={tutorial.title}
+              onChange={handleInputValueChange}
+              className="form-control"
+            ></input>
           </div>
           <div className="form-group">
             <label htmlFor="description">Description</label>
-            <input name="title" className="form-control"></input>
-            <button onClick={saveTutorial}>提交</button>
-            <button type="reset">重置</button>
+            <input
+              type="text"
+              name="description"
+              value={tutorial.description}
+              onChange={handleInputValueChange}
+              className="form-control"
+            ></input>
+            <button
+              type="submit"
+              onClick={saveTutorial}
+              className="btn btn-success"
+            >
+              提交
+            </button>
+            <button
+              type="reset"
+              onClick={initializeTutorial}
+              className="btn btn-secondary m-2"
+            >
+              重置
+            </button>
           </div>
         </div>
       )}

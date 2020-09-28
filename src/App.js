@@ -1,13 +1,13 @@
 /*
  * @Author: hiyan
  * @Date: 2020-09-27 16:46:56
- * @Last Modified by:   hiyan
- * @Last Modified time: 2020-09-27 16:46:56
+ * @Last Modified by: hiyan
+ * @Last Modified time: 2020-09-28 16:34:06
  */
 
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import bootstrap from "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import TutorialList from "./components/TutorialList";
@@ -37,7 +37,7 @@ function App() {
         <Switch>
           <Route path={["/", "/tutorials"]} exact component={TutorialList} />
           <Route path={"/addTutorial"} exact component={AddTutorial} />
-          <Route path="tutorial" component={Tutorial} />
+          <Route path="/tutorials/:id" component={Tutorial} />
         </Switch>
       </div>
     </div>
