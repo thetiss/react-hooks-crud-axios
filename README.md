@@ -151,6 +151,65 @@ feat:
 
 ## 3 [`axios API`](https://www.npmjs.com/package/axios)
 
+## `4 API Python`
+
+### 待优化
+
+将flask替换为fastAPI
+
+### 接口服务启动步骤
+
+pip3 install flask,flask-cros
+
+python mock.py
+
+打开浏览器，看。
+
+### 接口服务调试
+
+~~~cmd
+curl -h来查看请求参数的含义
+-v 显示请求的信息
+-X 选项指定其它协议
+get:
+    curl -v 192.168.33.1:8080/girls/age/18
+
+post:
+    curl -v 192.168.33.1:8080/girls -d 'age=14&cupSize=C'
+    curl -v -X POST 192.168.33.1:8080/girls -d 'age=14&cupSize=C'
+
+put:
+    curl -v -X PUT -d "age=19&cupSize=C" 192.168.33.1:8080/girls/3
+delete:
+curl -v -X DELETE localhost:8008/tutorials/3
+~~~
+
+### 补充知识：python
+
+~~~python
+# 导入模块
+import support
+ 
+# 现在可以调用模块里包含的函数了
+support.print_func("Runoob")
+~~~
+
+~~~python
+# 导入模块 fib 的 fibonacci 函数
+from fib import fibonacci
+# 这个声明不会把整个 fib 模块导入到当前的命名空间中，它只会将 fib 里的 fibonacci 单个引入到执行这个声明的模块的全局符号表。
+
+~~~
+
+
+
+1 解决跨域问题
+
+~~~python
+在/路由下加上这个
+response.headers.add("Access-Control-Allow-Origin", "*")
+~~~
+
 
 
 # RoadMap
